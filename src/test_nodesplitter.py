@@ -1,7 +1,7 @@
 import unittest
 
 from textnode import TextNode, TextType
-from nodesplitter import split_nodes_delimiter
+from inline_markdown import split_nodes_delimiter
 
 def assert_nodes(nodes, texts, types):
     assert len(nodes) == len(texts) == len(types)
