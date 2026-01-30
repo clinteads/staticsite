@@ -1,6 +1,6 @@
 import unittest
 
-from imagelinksplit import split_nodes_image, split_nodes_link
+from inline_markdown import split_nodes_image, split_nodes_link
 from textnode import TextNode, TextType
 
 class TestTextNode(unittest.TestCase):
