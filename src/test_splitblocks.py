@@ -1,6 +1,6 @@
 import unittest
 
-from splitblocks import markdown_to_blocks
+from block_type import markdown_to_blocks
 
 class TestTextNode(unittest.TestCase):
     def test_markdown_to_blocks(self):
