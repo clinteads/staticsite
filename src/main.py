@@ -2,6 +2,7 @@ from textnode import TextNode, TextType
 import os
 import shutil
 from gencontent import generate_page, generate_pagees_recursive
+import sys
 
 def copy_stuff(source, destination):
     if (os.path.exists(destination)):
@@ -26,8 +27,12 @@ def copy_stuff(source, destination):
 def main():
     # testNode = TextNode("This is some anchor text", TextType.LINK, "https://www.boot.dev")
     # print(testNode)
-    copy_stuff('./static','./public')
-    generate_pagees_recursive('content','template.html','public')
+    if len(sys.argv) > 1:
+        basepath = sys.argv[1]
+    else:
+        basepath = '/'
+    copy_stuff('./static','./docs')
+    generate_pagees_recursive('content','template.html','docs', basepath)
 
 if __name__ == "__main__":
     main()
