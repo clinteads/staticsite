@@ -1,4 +1,7 @@
 from enum import Enum
+from inline_markdown import text_to_textnodes
+from textnode import text_node_to_html_node, TextNode, TextType
+from htmlnode import ParentNode
 
 class BlockType(Enum):
     PARAGRAPH = "paragraph"
@@ -29,6 +32,8 @@ def ordered_list_helper(markdown):
         if number_part.isdigit() and after_dot.startswith(" "):
             if count != int(number_part):
                 return False
+        else:
+            return False
         count += 1
     return True
             
@@ -75,9 +80,9 @@ def block_to_html_node(block):
         return heading_to_html_node(block)
     if block_type == BlockType.CODE:
         return code_to_html_node(block)
-    if block_type == BlockType.OLIST:
+    if block_type == BlockType.ORDERED_LIST:
         return olist_to_html_node(block)
-    if block_type == BlockType.ULIST:
+    if block_type == BlockType.UNORDERED_LIST:
         return ulist_to_html_node(block)
     if block_type == BlockType.QUOTE:
         return quote_to_html_node(block)
@@ -128,6 +133,7 @@ def olist_to_html_node(block):
     items = block.split("\n")
     html_items = []
     for item in items:
+        print(f"DEBUG: Processing item: '{item}'")
         parts = item.split(". ", 1)
         text = parts[1]
         children = text_to_children(text)

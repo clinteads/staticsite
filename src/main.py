@@ -1,6 +1,7 @@
 from textnode import TextNode, TextType
 import os
 import shutil
+from gencontent import generate_page, generate_pagees_recursive
 
 def copy_stuff(source, destination):
     if (os.path.exists(destination)):
@@ -29,4 +30,6 @@ def main():
 if __name__ == "__main__":
     main()
     copy_stuff('./static','./public')
+    generate_pagees_recursive('content','template.html','public')
+
 
