@@ -24,12 +24,13 @@ def copy_stuff(source, destination):
     pass
 
 def main():
-    testNode = TextNode("This is some anchor text", TextType.LINK, "https://www.boot.dev")
-    print(testNode)
+    # testNode = TextNode("This is some anchor text", TextType.LINK, "https://www.boot.dev")
+    # print(testNode)
+    copy_stuff('./static','./public')
+    generate_pagees_recursive('content','template.html','public')
 
 if __name__ == "__main__":
     main()
-    copy_stuff('./static','./public')
-    generate_pagees_recursive('content','template.html','public')
+
 
 
